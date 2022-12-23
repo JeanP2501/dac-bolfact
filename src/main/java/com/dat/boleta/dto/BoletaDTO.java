@@ -1,6 +1,5 @@
 package com.dat.boleta.dto;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,10 +22,7 @@ public class BoletaDTO {
 		this.documento = documento;
 		this.emisor = emisor;
 		this.receptor = receptor;
-		//this.productos = productos;
-	}
-	
-	DecimalFormat formatNro = new DecimalFormat("0.00");
+	}	
 	
 	public Double getIgvPorcentaje() {
 		return IGV_PORCENTAJE;

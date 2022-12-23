@@ -1,19 +1,17 @@
 package com.dat.boleta.dto;
 
-import java.text.DecimalFormat;
-
 public class ProductoDTO {
 	
 	private int id;
 	private int cantidad;
-	private String valorUnitario;
-	private String precioUnitario;
+	private double valorUnitario;
+	private double precioUnitario;
 	private String unidadMedida;
 	private String codigo;
 	private String descripcion;
 	private String tipoImpuesto;
-	private String valorProducto;
-	private String igvProducto;
+	private double valorProducto;
+	private double igvProducto;
 	
 	private static int ultimoId;
 	
@@ -21,7 +19,7 @@ public class ProductoDTO {
 		this.id = ++ultimoId;
 	}
 	
-	public ProductoDTO(int cantidad, String valorUnitario, String precioUnitario, String unidadMedida,
+	public ProductoDTO(int cantidad, double valorUnitario, double precioUnitario, String unidadMedida,
 			String codigo, String tipoImpuesto) {
 		this();
 		this.cantidad = cantidad;
@@ -31,8 +29,6 @@ public class ProductoDTO {
 		this.codigo = codigo;
 		this.tipoImpuesto = tipoImpuesto;
 	}
-	
-	DecimalFormat formatNro = new DecimalFormat("0.00");
 	
 	public int getId() {
 		return id;
@@ -46,17 +42,17 @@ public class ProductoDTO {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	public String getValorUnitario() {
+	public double getValorUnitario() {
 		return valorUnitario;
 	}
 	public void setValorUnitario(double valorUnitario) {
-		this.valorUnitario = formatNro.format(valorUnitario);
+		this.valorUnitario = valorUnitario;
 	}
-	public String getPrecioUnitario() {
+	public double getPrecioUnitario() {
 		return precioUnitario;
 	}
 	public void setPrecioUnitario(double precioUnitario) {
-		this.precioUnitario = formatNro.format(precioUnitario);
+		this.precioUnitario = precioUnitario;
 	}
 	public String getUnidadMedida() {
 		return unidadMedida;
@@ -82,20 +78,19 @@ public class ProductoDTO {
 	public void setTipoImpuesto(String tipoImpuesto) {
 		this.tipoImpuesto = tipoImpuesto;
 	}
-	public String getValorProducto() {
-		//return valorProducto;
-		if(this.cantidad>0 && Double.parseDouble(this.valorUnitario)>0)
-			return formatNro.format(this.cantidad * Double.parseDouble(this.valorUnitario));
-		else return "";
+	public double getValorProducto() {	
+		if(this.cantidad>0 && this.valorUnitario>0)
+			return this.cantidad * this.valorUnitario;
+		else return 0;
 	}
 	public void setValorProducto(double valorProducto) {
-		this.valorProducto = formatNro.format(valorProducto);
+		this.valorProducto = valorProducto;
 	}
-	public String getIgvProducto() {
+	public double getIgvProducto() {
 		return igvProducto;
 	}
 	public void setIgvProducto(double igvProducto) {
-		this.igvProducto = formatNro.format(igvProducto);
+		this.igvProducto = igvProducto;
 	}
 	
 	@Override

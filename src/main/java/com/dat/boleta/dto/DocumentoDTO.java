@@ -1,7 +1,5 @@
 package com.dat.boleta.dto;
 
-import java.text.DecimalFormat;
-
 public class DocumentoDTO {
 	
 	private String tipo;
@@ -11,10 +9,10 @@ public class DocumentoDTO {
 	private String identificador;
 	private int idValorVenta;
 	private int idMontoEnLetras;
-	private String valorVenta;
-	private String igvVenta;
-	private String totalVenta;
-	private String descuentoVenta;
+	private double valorVenta;
+	private double igvVenta;
+	private double totalVenta;
+	private double descuentoVenta;
 	private String montoLetras;
 	private boolean gravadas;
 	private boolean exoneradas;
@@ -28,7 +26,7 @@ public class DocumentoDTO {
 		this.idValorVenta = (++ultimoId)+1000;
 	}
 
-	public DocumentoDTO(String tipo, int idMontoEnLetras, String valorVenta, String descuentoVenta,
+	public DocumentoDTO(String tipo, int idMontoEnLetras, double valorVenta, double descuentoVenta,
 			boolean gravadas, boolean exoneradas, boolean gratuitas, boolean descuentos, int items) {
 		this();
 		this.tipo = tipo;
@@ -41,8 +39,6 @@ public class DocumentoDTO {
 		this.descuentos = descuentos;
 		this.items = items;
 	}
-	
-	DecimalFormat formatNro = new DecimalFormat("0.00");
 		
 	public String getTipo() {
 		return tipo;
@@ -100,35 +96,35 @@ public class DocumentoDTO {
 		this.idMontoEnLetras = idMontoEnLetras;
 	}
 
-	public String getValorVenta() {
-		return formatNro.format(Double.parseDouble(valorVenta));
+	public double getValorVenta() {
+		return valorVenta;
 	}
 
-	public void setValorVenta(String valorVenta) {
+	public void setValorVenta(double valorVenta) {
 		this.valorVenta = valorVenta;
 	}
 
-	public String getIgvVenta() {
-		return formatNro.format(Double.parseDouble(igvVenta));
+	public double getIgvVenta() {
+		return igvVenta;
 	}
 
-	public void setIgvVenta(String igvVenta) {
+	public void setIgvVenta(double igvVenta) {
 		this.igvVenta = igvVenta;
 	}
 
-	public String getTotalVenta() {
-		return formatNro.format(Double.parseDouble(totalVenta));
+	public double getTotalVenta() {
+		return totalVenta;
 	}
 
-	public void setTotalVenta(String totalVenta) {
+	public void setTotalVenta(double totalVenta) {
 		this.totalVenta = totalVenta;
 	}
 
-	public String getDescuentoVenta() {
-		return formatNro.format(Double.parseDouble(descuentoVenta));
+	public double getDescuentoVenta() {	
+		return descuentoVenta;
 	}
 
-	public void setDescuentoVenta(String descuentoVenta) {
+	public void setDescuentoVenta(double descuentoVenta) {
 		this.descuentoVenta = descuentoVenta;
 	}
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dat.boleta.dto.BoletaDTO;
 import com.dat.boleta.service.BoletaService;
+import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/dac")
@@ -17,7 +18,12 @@ public class BoletaController {
 	
 	@RequestMapping("/bol")
 	public ResponseEntity<BoletaDTO> obtenerBoleta(){
-		return ResponseEntity.ok(boletaImpl.getBoleta());
+		Gson gson = new Gson();
+		String json = gson.toJson(boletaImpl.getBoleta());		
+		System.out.println(json);
+		return null;
+		//conexion(resp);
+		//return ResponseEntity.ok(boletaImpl.getBoleta());
 	}
 	
 

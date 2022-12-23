@@ -18,12 +18,11 @@ public class BoletaDAOImpl implements BoletaDAO {
 		DocumentoDTO doc1 = new DocumentoDTO();
 		doc1.setTipo("03");
 		doc1.setIdMontoEnLetras(1000);
-		doc1.setDescuentoVenta("0");
+		doc1.setDescuentoVenta(0);
 		doc1.setGravadas(true);
 		doc1.setExoneradas(false);
 		doc1.setGratuitas(false);
 		doc1.setDescuentos(false);
-		doc1.setItems(3);
 		
 		EmisorDTO em2 = new EmisorDTO();
 		em2.setEmpresaId(3);

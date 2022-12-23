@@ -23,7 +23,7 @@ public class BoletaServiceImpl implements BoletaService {
 	
 	SimpleDateFormat fchFormat = new SimpleDateFormat("yyyy-MM-dd");
 	SimpleDateFormat hrFormat = new SimpleDateFormat("hh:mm:ss");
-	DecimalFormat nroFormat = new DecimalFormat("0.00");
+	//DecimalFormat nroFormat = new DecimalFormat("0.00");
 	
 	Date fechaAct = new Date();
 	Calendar fchPart = Calendar.getInstance();
@@ -38,16 +38,16 @@ public class BoletaServiceImpl implements BoletaService {
 		//Calcula el total de venta de los productos
 		double total = 0;
 		for(ProductoDTO obj : boleta.getProductos()) {
-			obj.setIgvProducto(Double.parseDouble(obj.getValorProducto()) * boleta.getIgvPorcentaje() / 100);
-			total += Double.parseDouble(obj.getValorProducto());
+			obj.setIgvProducto(obj.getValorProducto() * boleta.getIgvPorcentaje() / 100);
+			total += obj.getValorProducto();
 		}
-		boleta.getDocumento().setValorVenta((total + ""));
+		boleta.getDocumento().setValorVenta((total));
 		double igvVentaTotal = ((total * boleta.getIgvPorcentaje()) / 100);
-		boleta.getDocumento().setIgvVenta((igvVentaTotal + ""));
-		boleta.getDocumento().setTotalVenta((igvVentaTotal + total) + "");
+		boleta.getDocumento().setIgvVenta((igvVentaTotal));
+		boleta.getDocumento().setTotalVenta((igvVentaTotal + total));
 		boleta.getDocumento().setItems(boleta.getProductos().size());
 		NroTxt nroTxt = new NroTxt();
-		boleta.getDocumento().setMontoLetras(nroTxt.convertir(nroFormat.format((igvVentaTotal + total)), true));		
+		boleta.getDocumento().setMontoLetras(nroTxt.convertir((igvVentaTotal + total)+"", true));		
 		return boleta;
 	}
 	
